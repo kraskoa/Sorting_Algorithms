@@ -1,28 +1,32 @@
 def merge_sort(array):
     array2 = []
     begin = 0
-    end = len(array) - 1
+    end = len(array)
     mid = (begin + end) // 2
     if mid != begin:
         first_half = array[0:mid]
-        second_half = array[mid + 1 : end - 1]
-        merge_sort(first_half)
-        merge_sort(second_half)
-
-    first_begin = begin
-    second_begin = mid + 1
-    for i in range(begin, end):
-        if (
-            second_begin > end
-            or first_begin <= mid
-            and array[first_begin] < array[second_begin]
-        ):
-            array2.append(array[first_begin])
-            first_begin += 1
-        else:
-            array2.append(array[second_begin])
-            second_begin += 1
-    return array2
+        second_half = array[mid:end]
+        first_half = merge_sort(first_half)
+        second_half = merge_sort(second_half)
+    if len(array) > 1:
+        for i in range(end):
+            if len(first_half) == 0 and len(second_half) == 0:
+                return array2
+            elif len(first_half) == 0:
+                array2.append(second_half[0])
+                second_half.pop(0)
+            elif len(second_half) == 0:
+                array2.append(first_half[0])
+                first_half.pop
+            elif first_half[0] <= second_half[0]:
+                array2.append(first_half[0])
+                first_half.pop(0)
+            else:
+                array2.append(second_half[0])
+                second_half.pop(0)
+        return array2
+    else:
+        return array
 
 
 def main():
