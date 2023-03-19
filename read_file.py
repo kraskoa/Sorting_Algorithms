@@ -1,3 +1,6 @@
+import random
+
+
 def read_words_from_file(path, n):
     words_list = []
     final_list = []
@@ -5,7 +8,6 @@ def read_words_from_file(path, n):
         for line in file_handle:
             for word in line.split():
                 words_list.append(word)
-        for index in range(0, n):
-            final_list.append(words_list[index])
+        final_list = random.choices(words_list, k=n)
         file_handle.close()
     return final_list
