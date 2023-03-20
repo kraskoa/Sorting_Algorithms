@@ -27,12 +27,3 @@ def merge_sort(array):
         return array2
     else:
         return array
-
-
-def main():
-    my_list = [23, 11, 2, 134, 8, 12]
-    print(merge_sort(my_list))
-
-
-if __name__ == "__main__":
-    main()
